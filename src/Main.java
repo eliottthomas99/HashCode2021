@@ -1,6 +1,5 @@
-import java.io.File;
+import java.io.*;
 import java.lang.reflect.Array;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -11,7 +10,8 @@ import java.util.Arrays;
 
 public class Main {
 
-    private static String filename = "a_example";
+    private static String filenameIn = "a_example";
+    private static String filenameOut = "a_example";
 
 
 
@@ -104,7 +104,7 @@ public class Main {
 
         /* RECUPERATION DES DONNEES */
 
-        File fileEntree = Paths.get(".", "in", filename).normalize().toFile();
+        File fileEntree = Paths.get(".", "in", filenameIn).normalize().toFile();
 
         if (fileEntree.exists()) {
             // log
@@ -179,6 +179,34 @@ public class Main {
 
 
         System.out.println(generateOutput(5,1,2,1,out));
+
+
+        // 2
+        // 2 1 4
+        // 3 0 2 3
+        // [[1, 4], [0, 2, 3]]
+
+        ArrayList<ArrayList<Integer>> livraisonsAr = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> livraison1 = new ArrayList<Integer>();
+        livraison1.add(1);
+        livraison1.add(4);
+        ArrayList<Integer> livraison2 = new ArrayList<Integer>();
+        livraison2.add(0);
+        livraison2.add(2);
+        livraison2.add(3);
+        livraisonsAr.add(livraison1);
+        livraisonsAr.add(livraison2);
+
+
+        /* ECRITURE DES DONNEES */
+
+
+        String str = "Hello";
+        FileOutputStream outputStream = new FileOutputStream(filenameOut);
+        byte[] strToBytes = str.getBytes();
+        outputStream.write(strToBytes);
+
+        outputStream.close();
 
 
     }
