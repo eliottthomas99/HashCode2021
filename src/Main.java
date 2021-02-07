@@ -10,8 +10,8 @@ import java.util.Arrays;
 
 public class Main {
 
-    private static String filenameIn = "a_example";
-    private static String filenameOut = "a_example";
+    private static String filenameIn = "e_many_teams.in";
+    private static String filenameOut = "e_many_teams.out";
 
 
 
@@ -80,7 +80,7 @@ public class Main {
     }
     
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         // recuperer les donnees
         // objets ?
@@ -95,10 +95,10 @@ public class Main {
 
         /* DECLARATION VARIABLES */
 
-        int nbPizzas;
-        int nbEquipesDe2;
-        int nbEquipesDe3;
-        int nbEquipesDe4;
+        int nbPizzas = 0;
+        int nbEquipesDe2 = 0;
+        int nbEquipesDe3 = 0;
+        int nbEquipesDe4 = 0;
         ArrayList<ArrayList<String>> pizzasAr = new ArrayList<ArrayList<String>>();
 
 
@@ -108,7 +108,7 @@ public class Main {
 
         if (fileEntree.exists()) {
             // log
-            System.out.println("*** Ouverture du fichier ***");
+            System.out.println("*** Ouverture du fichier entree ***");
             Scanner scannerEntree = new Scanner(fileEntree);
 
             nbPizzas = scannerEntree.nextInt();
@@ -143,17 +143,6 @@ public class Main {
 
         // traitement
 
-
-
-
-
-
-
-        // renvoyer les donnees
-
-        // liste des livraisons
-        //      livraison : liste des pizzas
-
         ArrayList<ArrayList<String>> out = new ArrayList<ArrayList<String>>(); // Create an ArrayList object
         String a[] = new String[]{"onion","pepper","olive"};
         ArrayList arlista = new ArrayList(Arrays.asList(a));
@@ -181,16 +170,31 @@ public class Main {
         System.out.println(generateOutput(5,1,2,1,out));
 
 
+        ArrayList<ArrayList<Integer>> livraisonsAr = generateOutput(nbPizzas, nbEquipesDe2, nbEquipesDe3, nbEquipesDe4, pizzasAr);
+
+
+
+
+
+        // renvoyer les donnees
+
+        // liste des livraisons
+        //      livraison : liste des pizzas
+
         // 2
         // 2 1 4
         // 3 0 2 3
-        // [[1, 4], [0, 2, 3]]
+        // [[2, 1, 4], [3, 0, 2, 3]]
+
+                /*
 
         ArrayList<ArrayList<Integer>> livraisonsAr = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> livraison1 = new ArrayList<Integer>();
+        livraison1.add(2);
         livraison1.add(1);
         livraison1.add(4);
         ArrayList<Integer> livraison2 = new ArrayList<Integer>();
+        livraison2.add(3);
         livraison2.add(0);
         livraison2.add(2);
         livraison2.add(3);
@@ -198,16 +202,54 @@ public class Main {
         livraisonsAr.add(livraison2);
 
 
+                 */
+
         /* ECRITURE DES DONNEES */
 
+        System.out.println("*** Creation du fichier sortie ***");
 
-        String str = "Hello";
-        FileOutputStream outputStream = new FileOutputStream(filenameOut);
-        byte[] strToBytes = str.getBytes();
-        outputStream.write(strToBytes);
+        FileOutputStream outputStream = new FileOutputStream("dataOut/" + filenameOut);
+
+
+        System.out.println("*** Ecriture des livraisons - debut ***");
+
+
+        String taille = String.valueOf(livraisonsAr.size()) + '\n';
+        byte[] tailleToBytes = taille.getBytes();
+        outputStream.write(tailleToBytes);
+
+        for (int i = 0; i < livraisonsAr.size(); ++i){
+
+            for (int j = 0; j < livraisonsAr.get(i).size(); ++j) {
+                String str = livraisonsAr.get(i).get(j).toString();
+                byte[] strToBytes = str.getBytes();
+                outputStream.write(strToBytes);
+                if (j < livraisonsAr.get(i).size() - 1 ) {
+                    outputStream.write(' ');
+                } else {
+                    outputStream.write('\n');
+                }
+
+
+            }
+
+        }
+
+
+
+
+        // String str = "Hello there";
+
+
+
+        // byte[] strToBytes = str.getBytes();
+        // outputStream.write(strToBytes);
 
         outputStream.close();
 
+
+
+        System.out.println("*** Ecriture des livraisons - fin ***");
 
     }
 }
