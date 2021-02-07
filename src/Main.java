@@ -46,6 +46,9 @@ public class Main {
             nbEquipesDe3 = scannerEntree.nextInt();
             nbEquipesDe4 = scannerEntree.nextInt();
 
+
+            System.out.println("*** Recuperation des pizzas - debut ***");
+
             for (int i = 0;i < nbPizzas; ++i){
                 int nbIngredients = scannerEntree.nextInt();
 
@@ -58,9 +61,10 @@ public class Main {
                 }
 
                 pizzasAr.add(pizza);
-                System.out.println(pizza);
+                // System.out.println(pizza); // print de debug
             }
 
+            System.out.println("*** Recuperation des pizzas - fin ***");
 
         } else {
             System.out.println("Erreur ouverture du fichier, fichier non trouve");
