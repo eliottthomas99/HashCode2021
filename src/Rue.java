@@ -40,4 +40,8 @@ public class Rue {
         this.nom = nom;
         T = t;
     }
+    public Rue() {
+    }
+
+
 }

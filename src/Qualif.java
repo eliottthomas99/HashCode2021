@@ -20,6 +20,7 @@ public class Qualif {
         int V;
         int F;
 
+        ArrayList<Rue> rues = null;
         ArrayList<Intersection> intersections = null;
         ArrayList<Voiture> voitures;
 
@@ -38,6 +39,11 @@ public class Qualif {
             S = scannerEntree.nextInt();
             V = scannerEntree.nextInt();
             F = scannerEntree.nextInt();
+
+            rues = new ArrayList<Rue>(S);
+            for (int i = 0; i < S; ++i) {
+                rues.add(new Rue());
+            }
 
             intersections = new ArrayList<Intersection>(I);
             for (int i = 0; i < I; ++i) {
