@@ -192,7 +192,7 @@ public class Qualif {
         ) {
             for (Rue rue: voiture.rues
             ) {
-                /*
+
                 for (Rue rueNommee: rues
                 ) {
 
@@ -201,13 +201,20 @@ public class Qualif {
                     }
 
 
-                }*/
+                }
 
-                rue.setDensite(rue.getDensite() +1 );
+
 
 
 
             }
+
+        }
+
+
+        for (Rue rue1: rues
+             ) {
+            rue1.setDensite(rue1.getDensite() + rue1.getT());
 
         }
 
@@ -229,11 +236,13 @@ public class Qualif {
                 
             }
 
+
+
             for (Rue rue: intersect.getRuesIn()
             ) {
 
                 if(rue.getDensite()!=0){
-                    rue.setTempsFeuVert( (int)Math.ceil(   (float)rue.getDensite()/(float)min   )  );
+                    rue.setTempsFeuVert( (int)Math.ceil(   (float)rue.getDensite()/(float)min )   );
 
                 }
 
