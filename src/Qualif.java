@@ -273,18 +273,19 @@ public static ArrayList<Sortie> toSorties(ArrayList<Intersection> intersections)
          ) {
 
 
-        Sortie sortie = new Sortie(intersect.getNumero(), intersect.ruesIn.size(), intersect.ruesIn);
+
+        ArrayList<Rue> copie = new ArrayList<>(intersect.ruesIn);
 
         for (Rue rue:intersect.ruesIn
              ) {
 
             if(rue.getDensite()==0){
-                intersect.ruesIn.remove(rue);
+                copie.remove(rue);
             }
 
         }
 
-
+        Sortie sortie = new Sortie(intersect.getNumero(), copie.size(), copie);
         sorties.add( sortie);
 
 
