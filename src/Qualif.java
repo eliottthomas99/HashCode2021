@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Qualif {
 
-    private static String filenameIn = "c.txt";
-    private static String filenameOut = "c.out";
+    private static String filenameIn = "a.txt";
+    private static String filenameOut = "a.out";
 
 
     public static void main(String[] args) throws IOException {
