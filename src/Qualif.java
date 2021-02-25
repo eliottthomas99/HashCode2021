@@ -66,6 +66,7 @@ public class Qualif {
 
                 Rue rue = new Rue(nom, L);
 
+                rues.add(rue);
                 intersections.get(B).ruesOut.add(rue);
                 intersections.get(E).ruesIn.add(rue);
             }
