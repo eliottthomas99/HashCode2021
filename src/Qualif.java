@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Qualif {
 
-    private static String filenameIn = "f.txt";
-    private static String filenameOut = "f.out";
+    private static String filenameIn = "b.txt";
+    private static String filenameOut = "b.out";
 
 
     public static void main(String[] args) throws IOException {
@@ -90,14 +90,22 @@ public class Qualif {
 
 
             //Version 2
-            toFeuVert2(intersections,voitures,rues);
+            // toFeuVert2(intersections,voitures,rues);
 
 
 
 
 
-            ArrayList<Sortie> sorties = toSorties(intersections);
+            // ArrayList<Sortie> sorties = toSorties(intersections);
 
+            // pour la D
+
+            ArrayList<Sortie> sorties = new ArrayList<Sortie>();
+
+            for (int i = 0; i < intersections.size(); ++i){
+                ArrayList<>
+                Sortie maSortie = new Sortie(i, 1, ruesAr);
+            }
 
             // sortie
 
