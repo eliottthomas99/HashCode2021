@@ -83,11 +83,11 @@ public class Qualif {
 
 
             //Version 1
-            toFeuVert1(intersections);
+            //toFeuVert1(intersections);
 
 
             //Version 2
-
+            toFeuVert2(intersections,voitures,rues);
 
 
 
@@ -127,11 +127,13 @@ public class Qualif {
         }
     }
 
-    public static void toFeuVert2(ArrayList<Intersection> intersections, ArrayList<Voiture> voitures){
+    public static void toFeuVert2(ArrayList<Intersection> intersections, ArrayList<Voiture> voitures,ArrayList<Rue> rues){
 
-        ArrayList<Rue> ruesNommees = new ArrayList<>();
+        //ArrayList<Rue> ruesNommees = new ArrayList<>();
 
         //On ajoute toutes les rues existantes
+
+        /*
         for (Intersection intersect : intersections
         ) {
 
@@ -141,7 +143,7 @@ public class Qualif {
                 ruesNommees.add(rue);
             }
 
-        }
+        }*/
 
         //On mesure l'importance de chaque rue en terme de passage
 
@@ -150,7 +152,7 @@ public class Qualif {
             for (Rue rue: voiture.rues
             ) {
 
-                for (Rue rueNommee: ruesNommees
+                for (Rue rueNommee: rues
                 ) {
 
                     if(rueNommee.getNom().equals(rue.getNom())){
@@ -168,10 +170,40 @@ public class Qualif {
         for (Intersection intersect:intersections
              ) {
 
-            for (:
+            int min = 2147483647 ;
+
+
+
+            for (Rue rue: intersect.getRuesIn()
                  ) {
+
+                if(rue.getDensite()!=0){
+                    min = Math.min(min, rue.getDensite());
+                    
+                }
                 
             }
+
+            for (Rue rue: intersect.getRuesIn()
+            ) {
+
+                if(rue.getDensite()!=0){
+                    rue.setTempsFeuVert( (int)Math.ceil(   (float)rue.getDensite()/(float)min   )  );
+
+                }
+
+                else{
+                    rue.setTempsFeuVert(0);
+                }
+
+            }
+
+
+
+
+
+
+
             
         }
         
