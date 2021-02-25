@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Qualif {
 
-    private static String filenameIn = "f.txt";
-    private static String filenameOut = "f.out";
+    private static String filenameIn = "c.txt";
+    private static String filenameOut = "c.out";
 
 
     public static void main(String[] args) throws IOException {
@@ -20,7 +20,7 @@ public class Qualif {
         int V;
         int F;
 
-        ArrayList<Rue> rues = null;
+        ArrayList<Rue> rues = new ArrayList<Rue>();
         ArrayList<Intersection> intersections = null;
         ArrayList<Voiture> voitures;
 
@@ -67,13 +67,16 @@ public class Qualif {
                 intersections.get(E).ruesIn.add(rue);
             }
 
+
             // log
             System.out.println("-- traitement voitures --");
-            for (int i = 0; i < V; ++i) {
+            for (int i = 0; i < V; ++i){
                 int nbRues = scannerEntree.nextInt();
 
                 for (int j = 0; j < nbRues; ++j){
-
+                    String rueNom = scannerEntree.next();
+                    Rue rue = new Rue(rueNom, -1); /* = -1 car non initialise !! */
+                    voitures.get(i).rues.add(rue);
                 }
             }
 
@@ -97,6 +100,44 @@ public class Qualif {
 
 
             // sortie
+
+
+            // log
+            System.out.println("*** Creation du fichier sortie ***");
+            FileOutputStream outputStream = new FileOutputStream("out2/" + filenameOut);
+
+            // log
+            System.out.println("*** Ecriture dans le fichier sortie ***");
+
+            String taille = String.valueOf(sorties.size()) + '\n';
+            byte[] tailleToBytes = taille.getBytes();
+            outputStream.write(tailleToBytes);
+
+            for (int i = 0; i< intersections.size(); ++i){
+                // print idIntersection
+                String idIntersection = String.valueOf(sorties.get(i).getIdIntersection()) + '\n';
+                byte[] idToBytes = idIntersection.getBytes();
+                outputStream.write(idToBytes);
+
+                // print nombre rues
+                String nbRues = String.valueOf(sorties.get(i).getRues().size()) + '\n';
+                byte[] nbRuesToBytes = nbRues.getBytes();
+                outputStream.write(nbRuesToBytes);
+
+                for (int j = 0; j < sorties.get(i).getRues().size(); ++j){
+                    // print nom rue
+                    String nomRue = sorties.get(i).getRues().get(j).nom + ' ';
+                    byte[] nomRueToBytes = nomRue.getBytes();
+                    outputStream.write(nomRueToBytes);
+
+                    // print tempsFeuVert
+                    String tempsVert = String.valueOf(sorties.get(i).getRues().get(j).tempsFeuVert) + '\n';
+                    byte[] tempsVertToBytes = tempsVert.getBytes();
+                    outputStream.write(tempsVertToBytes);
+                }
+
+
+            }
 
 
         }
