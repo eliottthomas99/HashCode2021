@@ -60,6 +60,7 @@ public class Qualif {
                 int L = scannerEntree.nextInt();
 
                 Rue rue = new Rue(nom, L);
+                rue.setDensite(0);
 
                 rues.add(rue);
                 intersections.get(B).ruesOut.add(rue);
