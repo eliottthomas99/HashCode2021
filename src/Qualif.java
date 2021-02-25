@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +12,7 @@ public class Qualif {
     private static String filenameOut = "a.out";
 
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         int D;
         int I;
@@ -18,11 +20,7 @@ public class Qualif {
         int V;
         int F;
 
-        ArrayList<Intersection> intersections;
-
-
-
-
+        ArrayList<Intersection> intersections = null;
         ArrayList<Voiture> voitures;
 
 
@@ -71,14 +69,14 @@ public class Qualif {
             for (int i = 0; i < V; ++i) {
                 int nbRues = scannerEntree.nextInt();
 
-                for (int j = 0; j < nbRues; ++j) {
+                for (int j = 0; j < nbRues; ++j){
 
                 }
-
             }
 
+            // log
+            System.out.println("*** Fermeture du fichier entree ***");
 
-            // traitement
 
 
             //Version 1
@@ -99,6 +97,11 @@ public class Qualif {
 
 
         }
+
+
+
+
+
 
 
     }
