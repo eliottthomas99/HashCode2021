@@ -19,6 +19,10 @@ public class Qualif {
         int F;
 
         ArrayList<Intersection> intersections;
+
+
+
+
         ArrayList<Voiture> voitures;
 
 
@@ -26,7 +30,7 @@ public class Qualif {
 
         File fileEntree = Paths.get(".", "in2", filenameIn).normalize().toFile();
 
-        if (fileEntree.exists()){
+        if (fileEntree.exists()) {
             // log
             System.out.println("*** Ouverture du fichier entree ***");
             Scanner scannerEntree = new Scanner(fileEntree);
@@ -38,19 +42,19 @@ public class Qualif {
             F = scannerEntree.nextInt();
 
             intersections = new ArrayList<Intersection>(I);
-            for (int i = 0; i < I; ++i){
+            for (int i = 0; i < I; ++i) {
                 intersections.add(new Intersection());
                 intersections.get(i).numero = i;
             }
 
             voitures = new ArrayList<Voiture>(V);
-            for (int i = 0; i < I; ++i){
+            for (int i = 0; i < I; ++i) {
                 voitures.add(new Voiture());
             }
 
             // log
             System.out.println("-- traitement rues --");
-            for (int i = 0; i < S; ++i){
+            for (int i = 0; i < S; ++i) {
                 int B = scannerEntree.nextInt();
                 int E = scannerEntree.nextInt();
                 String nom = scannerEntree.next();
@@ -64,40 +68,37 @@ public class Qualif {
 
             // log
             System.out.println("-- traitement voitures --");
-            for (int i = 0; i < V; ++i){
+            for (int i = 0; i < V; ++i) {
                 int nbRues = scannerEntree.nextInt();
 
-                for (int j = 0; j < nbRues; ++j){
+                for (int j = 0; j < nbRues; ++j) {
 
                 }
 
             }
 
 
+            // traitement
+
+
+            //Version 1
+            toFeuVert1(intersections);
+
+
+            //Version 2
+
+
+
+
+
+
+            ArrayList<Sortie> sorties = toSorties(intersections);
+
+
+            // sortie
+
 
         }
-
-
-
-
-
-        // traitement
-
-
-        toFeuVert1(intersections);
-
-
-        ArrayList<Sortie> sorties = toSorties(intersections);
-
-
-
-
-
-        // sortie
-
-
-
-
 
 
     }
@@ -118,9 +119,72 @@ public class Qualif {
             }
 
         }
+    }
+
+    public static void toFeuVert2(ArrayList<Intersection> intersections, ArrayList<Voiture> voitures){
+
+        ArrayList<Rue> ruesNommees = new ArrayList<>();
+
+        //On ajoute toutes les rues existantes
+        for (Intersection intersect : intersections
+        ) {
+
+            // ajouter toutes les rues in
+            for (Rue rue : intersect.ruesIn
+            ) {
+                ruesNommees.add(rue);
+            }
+
+        }
+
+        //On mesure l'importance de chaque rue en terme de passage
+
+        for (Voiture voiture : voitures
+        ) {
+            for (Rue rue: voiture.rues
+            ) {
+
+                for (Rue rueNommee: ruesNommees
+                ) {
+
+                    if(rueNommee.getNom().equals(rue.getNom())){
+                        rueNommee.setDensite(rueNommee.getDensite() +1 );
+                    }
+
+
+                }
+
+            }
+
+        }
+
+
+        for (Intersection intersect:intersections
+             ) {
+
+            for (:
+                 ) {
+                
+            }
+            
+        }
+        
+        
+        
+        
+
+
+
 
 
     }
+
+
+
+
+
+
+
 
 public static ArrayList<Sortie> toSorties(ArrayList<Intersection> intersections){
 

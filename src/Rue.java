@@ -2,6 +2,15 @@ public class Rue {
     public String nom;
     public int T;
     public int tempsFeuVert;
+    private int densite;
+
+    public int getDensite() {
+        return densite;
+    }
+
+    public void setDensite(int densite) {
+        this.densite = densite;
+    }
 
     public String getNom() {
         return nom;
