@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Qualif {
 
-    private static String filenameIn = "a.txt";
-    private static String filenameOut = "a.out";
+    private static String filenameIn = "f.txt";
+    private static String filenameOut = "f.out";
 
 
     public static void main(String[] args) throws IOException {
@@ -113,7 +113,7 @@ public class Qualif {
             byte[] tailleToBytes = taille.getBytes();
             outputStream.write(tailleToBytes);
 
-            for (int i = 0; i< intersections.size(); ++i){
+            for (int i = 0; i< sorties.size(); ++i){
                 // print idIntersection
                 String idIntersection = String.valueOf(sorties.get(i).getIdIntersection()) + '\n';
                 byte[] idToBytes = idIntersection.getBytes();
