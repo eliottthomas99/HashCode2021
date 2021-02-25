@@ -192,7 +192,7 @@ public class Qualif {
         ) {
             for (Rue rue: voiture.rues
             ) {
-
+                /*
                 for (Rue rueNommee: rues
                 ) {
 
@@ -201,7 +201,11 @@ public class Qualif {
                     }
 
 
-                }
+                }*/
+
+                rue.setDensite(rue.getDensite() +1 );
+
+
 
             }
 
