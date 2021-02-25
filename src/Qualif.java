@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Qualif {
 
-    private static String filenameIn = "a.txt";
-    private static String filenameOut = "a.out";
+    private static String filenameIn = "f.txt";
+    private static String filenameOut = "f.out";
 
 
     public static void main(String[] args) throws IOException {
@@ -46,7 +46,7 @@ public class Qualif {
             }
 
             voitures = new ArrayList<Voiture>(V);
-            for (int i = 0; i < I; ++i) {
+            for (int i = 0; i < V; ++i){
                 voitures.add(new Voiture());
             }
 
