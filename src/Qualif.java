@@ -286,7 +286,11 @@ public static ArrayList<Sortie> toSorties(ArrayList<Intersection> intersections)
         }
 
         Sortie sortie = new Sortie(intersect.getNumero(), copie.size(), copie);
-        sorties.add( sortie);
+
+        if(copie.size()!=0){
+            sorties.add( sortie);
+        }
+
 
 
 
